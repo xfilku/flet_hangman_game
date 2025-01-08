@@ -36,7 +36,7 @@ def read_file(page, path, router):
     """
     try:
         # Otwieramy plik w trybie odczytu
-        with open(path, 'r') as file:
+        with open(path, 'r', encoding='utf-8') as file:
             file_content = file.read()
             elements = file_content.split(',')  # Dzielimy zawartość pliku po przecinkach
             elements = [element.strip() for element in elements]  # Usuwamy zbędne spacje
