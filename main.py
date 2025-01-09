@@ -11,7 +11,7 @@ Functions:
 Usage:
     Run this file to start the Flet application.
 """
-
+import platform
 import flet as ft
 from routes import router
 from user_controls.appbar import NavBar
@@ -46,6 +46,18 @@ def main(page: ft.Page):
     page.go('/')  
     page.update()  # Aktualizujemy stronę, aby odzwierciedlić zmiany
 
+    page.favicon = "assets/logo.png" #Ikona aplikacji
+    page.title = "Wisielec" #Tytuł okienka
+
+    system_name = platform.system() #wykrywanie systemu operacyjnego
+    print(system_name)
+
+    if system_name == "Windows":
+        page.window_icon = "assets/icons/icon-192.png"
+    elif system_name == "Linux":
+        pass
+    elif system_name == "Darwin":
+        pass 
 # Uruchomienie aplikacji
 # Funkcja ft.app uruchamia główną pętlę aplikacji z targetem main
-ft.app(target=main)
+ft.app(target=main, assets_dir="assets", icon="assets/icon.png")

@@ -23,16 +23,30 @@ def NavBar(page):
         ft.AppBar: An AppBar configured with navigation and action buttons.
     """
     NavBar = ft.AppBar(
-        leading=ft.IconButton(
-            icon=ft.Icons.ARROW_BACK,
-            on_click=lambda _: page.router.go_back(page),  # Funkcja obsługująca powrót do poprzedniej trasy
-        ),
-        leading_width=40,  # Szerokość ikony wiodącej (np. strzałki)
-        title=ft.Text(f"Wisielec"),  # Tytuł aplikacji wyświetlany na AppBarze
-        center_title=False,  # Tytuł nie jest wyśrodkowany
-        bgcolor=ft.Colors.INDIGO_ACCENT_100,  # Kolor tła AppBara
-        actions=[
-            ft.IconButton(ft.Icons.QUESTION_MARK_OUTLINED, on_click=lambda _: page.go('/info')),  # Ikona prowadząca do strony informacji
+    leading=ft.Row(
+        controls=[
+            ft.IconButton(
+                icon=ft.Icons.ARROW_BACK,
+                on_click=lambda _: page.router.go_back(page),  # Funkcja obsługująca powrót do poprzedniej trasy
+            ),
+            ft.Image(
+                src="assets/logo.png",  # Ścieżka do pliku z ikoną/logo
+                width=60,  # Szerokość obrazu
+                height=60,  # Wysokość obrazu
+                fit=ft.ImageFit.CONTAIN  # Dopasowanie obrazu
+            ),
+            ft.Container(width=20),  # Dodanie odstępu (20 pikseli) między logo a tytułem
+        ],
+        spacing=10,  # Odległość między strzałką a logo
+        alignment=ft.MainAxisAlignment.START,  # Wyrównanie do lewej
+    ),
+    leading_width=100,  # Szerokość obszaru leading (dostosuj w zależności od szerokości logo i strzałki)
+    title=ft.Text(f"Wisielec", weight=ft.FontWeight.W_500),  # Tytuł aplikacji wyświetlany na AppBarze
+    center_title=False,  # Tytuł nie jest wyśrodkowany
+    bgcolor=ft.Colors.INDIGO_ACCENT_100,  # Kolor tła AppBara
+    actions=[
+        ft.IconButton(ft.Icons.QUESTION_MARK_OUTLINED, on_click=lambda _: page.go('/info')),  # Ikona prowadząca do strony informacji
         ]
     )
     return NavBar
+
